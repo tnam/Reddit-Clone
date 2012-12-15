@@ -1,0 +1,10 @@
+<h1><%= link_to @post.title, @post.url %></h1>
+<p><%= pluralize(@post.comments.count, 'comment') %><p>
+
+<p>
+  <ul>
+    <% @post.comments.each do |comment| %>
+      <li><%= comment.content %></li>
+    <% end %>
+  </ul>
+</p>
