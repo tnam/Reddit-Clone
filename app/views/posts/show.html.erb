@@ -8,3 +8,13 @@
     <% end %>
   </ul>
 </p>
+
+<h4>Post a comment</h4>
+<p>
+  <%= form_for [@post, @comment] do |f| %>
+    <%= f.label :content %>
+    <%= f.text_area :content, rows: 5 %>
+    <br>
+    <%= f.submit "Submit" %>
+  <% end %>
+</p>
