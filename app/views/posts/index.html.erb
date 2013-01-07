@@ -1,11 +1,18 @@
-<ul>
+<ol>
   <% @posts.each do |post| %>
     <li>
       <%= link_to post.title, post.url %> 
-      (<%= link_to pluralize(post.comments.count, 'comment'), post %>)
+      (<%= link_to pluralize(post.comments.count, 'comment'), post %>) <br>
+      <%= link_to post_votes_path(post, thumb: "up"), method: :post do %>
+        <i class="icon-thumbs-up"></i>
+      <% end %>
+      <span><%= post.vote_count %></span>
+      <%= link_to post_votes_path(post, thumb: "down"), method: :post do %>
+        <i class="icon-thumbs-down"></i>
+      <% end %>
     </li>
   <% end %>
-</ul>
+</ol>
 
 <p>
 <%= link_to "Create new post", new_post_path %>
