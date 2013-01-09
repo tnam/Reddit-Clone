@@ -1,7 +1,11 @@
-<ol>
+<p>
+<%= link_to "Create new post", new_post_path %>
+</p>
+
+<ul>
   <% @posts.each do |post| %>
     <li>
-      <%= link_to post.title, post.url %> 
+      <%= display_url_link(post) %> 
       (<%= link_to pluralize(post.comments.count, 'comment'), post %>) <br>
       <%= link_to post_votes_path(post, thumb: "up"), method: :post do %>
         <i class="icon-thumbs-up"></i>
@@ -10,10 +14,6 @@
       <%= link_to post_votes_path(post, thumb: "down"), method: :post do %>
         <i class="icon-thumbs-down"></i>
       <% end %>
-    </li>
+    </li><hr>
   <% end %>
-</ol>
-
-<p>
-<%= link_to "Create new post", new_post_path %>
-</p>
+</ul>

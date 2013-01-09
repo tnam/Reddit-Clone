@@ -16,6 +16,9 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     if @post.save
       redirect_to root_path, notice: "Post created successfully"
+    else
+      flash[:alert] = @post.errors.full_messages.join("<br>").html_safe
+      render 'new'
     end
   end
 

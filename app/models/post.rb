@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
   attr_accessible :url, :title
 
+  validates :url, :title, presence: "true"
+
   has_many :comments
   has_many :votes
 
