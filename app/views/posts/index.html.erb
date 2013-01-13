@@ -14,6 +14,7 @@
       <%= link_to post_votes_path(post, thumb: "down"), method: :post do %>
         <i class="icon-thumbs-down"></i>
       <% end %>
+      <span>Posted by <%= post.user.username %></span>
     </li><hr>
   <% end %>
 </ul>

@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_filter :require_user, only: [:new, :create]
+
   def index
     @posts = Post.all
   end
@@ -14,6 +16,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params[:post])
+    @post.user_id = current_user.id
     if @post.save
       redirect_to root_path, notice: "Post created successfully"
     else
