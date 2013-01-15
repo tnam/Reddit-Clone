@@ -1,0 +1,35 @@
+<h2><%= current_user.username %>'s profile</h2>
+
+<h3>Joined on</h3>
+<p>
+  <%= current_user.created_at.to_s(:long) %>
+</p><hr>
+
+<h3>Last 10 posts</h3>
+<p>
+  <ul>
+    <% current_user.posts.order(by: :created_at).limit(10).reverse.each do |post| %>
+      <li><%= post.title %></li>
+    <% end %>
+  </ul>
+</p><hr>
+
+<h3>Last 10 comments</h3>
+<p>
+  <ul>
+    <% current_user.comments.order(by: :created_at).limit(10).reverse.each do |comment| %>
+      <li><%= comment.content %></li>
+    <% end %>
+  </ul>
+</p><hr>
+
+<h3>Last 10 tweets</h3>
+<% if !current_user.twitter.blank? %>
+  <p>
+    <ul>
+      <% Twitter.user_timeline(current_user.twitter.to_s, count: 10).each do |tweet| %>
+        <li><%= tweet.text %></li>
+      <% end %>
+    </ul>
+  </p>
+<% end %>

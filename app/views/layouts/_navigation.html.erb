@@ -1,16 +1,16 @@
-<a class="brand" href="#">GamerList</a>
+<a class="brand" href="/">GamerList</a>
 
 <ul class="nav">
   <li class="active">
-    <a href="#">Home</a>
+    <a href="#">General</a>
   </li>
-  <li><a href="#">Link</a></li>
-  <li><a href="#">Link</a></li>
+  <li><a href="#">Cat 2</a></li>
+  <li><a href="#">Cat 3</a></li>
 </ul>    
 
 <ul class="nav pull-right">
   <% if logged_in? %>
-    <li><a href="#">Welcome <%= current_user.username %>!</a></li>
+    <li><%= link_to "Profile", profile_path %></li>
     <li><%= link_to "Logout", logout_path %></li>
   <% else %>
     <li><%= link_to "Register", register_path %></li>
